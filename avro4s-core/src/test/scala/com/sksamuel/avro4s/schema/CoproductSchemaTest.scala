@@ -23,6 +23,12 @@ class CoproductSchemaTest extends FunSuite with Matchers {
     val expected = new org.apache.avro.Schema.Parser().parse(getClass.getResourceAsStream("/coproduct_of_coproducts.json"))
     coproductOfCoproducts.toString(true) shouldBe expected.toString(true)
   }
+
+  test("support coproducts of coproducts in a field") {
+    val coproductOfCoproducts = AvroSchema[CoproductOfCoproductsField]
+    val expected = new org.apache.avro.Schema.Parser().parse(getClass.getResourceAsStream("/coproduct_of_coproducts.json"))
+    coproductOfCoproducts.toString(true) shouldBe expected.toString(true)
+  }
 }
 
 case class Gimble(x: String)
@@ -34,4 +40,5 @@ object CPWrapper {
 
 case class Coproducts(cp: Int :+: String :+: Boolean :+: CNil)
 case class CoproductOfCoproducts(cp: (Int :+: String :+: CNil) :+: Boolean :+: CNil)
+case class CoproductOfCoproductsField(cp: Coproducts :+: Boolean :+: CNil)
 
