@@ -1,20 +1,16 @@
 {
-  "type": "record",
-  "name": "CoproductOfCoproductsNested",
-  "namespace": "com.sksamuel.avro4s.schema",
-  "fields": [
-    {
-      "name": "cp",
-      "type": [
-        {
-          "type": [
-            "int",
-            "string",
-            "boolean"
-          ]
-        },
-        "boolean"
-      ]
-    }
-  ]
+  "type" : "record",
+  "name" : "CoproductOfCoproductsField",
+  "namespace" : "com.sksamuel.avro4s.schema",
+  "fields" : [ {
+    "name" : "cp",
+    "type" : [ {
+      "type" : "record",
+      "name" : "Coproducts",
+      "fields" : [ {
+        "name" : "cp",
+        "type" : [ "int", "string", "boolean" ]
+      } ]
+    }, "boolean" ]
+  } ]
 }

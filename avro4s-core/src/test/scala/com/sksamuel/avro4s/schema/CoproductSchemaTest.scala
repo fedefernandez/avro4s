@@ -26,7 +26,7 @@ class CoproductSchemaTest extends FunSuite with Matchers {
 
   test("support coproducts of coproducts in a field") {
     val coproductOfCoproducts = AvroSchema[CoproductOfCoproductsField]
-    val expected = new org.apache.avro.Schema.Parser().parse(getClass.getResourceAsStream("/coproduct_of_coproducts.json"))
+    val expected = new org.apache.avro.Schema.Parser().parse(getClass.getResourceAsStream("/coproduct_of_coproducts_field.json"))
     coproductOfCoproducts.toString(true) shouldBe expected.toString(true)
   }
 }
